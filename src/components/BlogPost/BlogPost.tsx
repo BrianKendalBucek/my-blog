@@ -1,4 +1,5 @@
 import React from 'react';
+import './BlogPost.css';
 
 interface BlogPostProps {
     title: string;
@@ -7,7 +8,7 @@ interface BlogPostProps {
 
 const BlogPost: React.FC<BlogPostProps> = ({ title, content }) => {
     return (
-        <div>
+        <div className='blog-post'>
             <h2>{title}</h2>
             <p>{content}</p>
         </div>

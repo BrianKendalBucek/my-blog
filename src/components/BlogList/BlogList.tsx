@@ -1,5 +1,6 @@
 import React from 'react';
-import BlogPost from './BlogPost';
+import './BlogList.css';
+import BlogPost from '../BlogPost/BlogPost';
 
 interface BlogListProps {
     posts: Array<{
@@ -10,7 +11,7 @@ interface BlogListProps {
 
 const BlogList: React.FC<BlogListProps> = ({ posts }) => {
     return (
-        <div>
+        <div className="blog-list">
             {posts.map((post, index) => (
                 <BlogPost key={index} title={post.title} content={post.content} />
             ))}

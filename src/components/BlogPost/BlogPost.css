@@ -1,0 +1,10 @@
+.blog-post {
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+.blog-post h2 {
+  margin-top: 0;
+}

@@ -1,6 +1,7 @@
 import React from 'react';
-import Navbar from './components/Navbar';
-import BlogList from './components/BlogList';
+import './App.css';
+import Navbar from './components/Navbar/Navbar';
+import BlogList from './components/BlogList/BlogList';
 
 
 const App: React.FC = () => {
