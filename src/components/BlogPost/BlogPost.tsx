@@ -2,14 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getArticles, Article } from "../../api/strapiAPI";
 
-interface BlogPostProps {
-  title?: string;
-  content?: string;
-}
-
-const BlogPost: React.FC<BlogPostProps> = ({ title, content }) => {
+const BlogPost: React.FC = () => {
   const { id } = useParams<{ id: string }>();
-
   const [post, setPost] = useState<Article | null>(null);
 
   useEffect(() => {
@@ -30,18 +24,16 @@ const BlogPost: React.FC<BlogPostProps> = ({ title, content }) => {
 
     fetchPost();
   }, [id]);
-  console.log(post);
+
+  if (!post) {
+    return <p>Loading post...</p>; // or "Post not found" if you prefer
+  }
 
   return (
     <div className="blog-post">
-      {title ? (
-        <>
-          <h2>{title}</h2>
-          <p>{content}</p>
-        </>
-      ) : (
-        <p>Post not found.</p>
-      )}
+      <h2>{post.attributes.title}</h2>
+      <p>{post.attributes.content}</p>
+      {/* Include additional post details here if available */}
     </div>
   );
 };

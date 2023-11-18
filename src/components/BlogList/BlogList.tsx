@@ -1,6 +1,6 @@
 import React from "react";
-import "./BlogList.css"; // Make sure to update this CSS file for styling
-import BlogPost from "../BlogPost/BlogPost";
+import { Link } from "react-router-dom";
+import "./BlogList.css"; // Update this CSS file for styling
 import { Article } from "../../api/strapiAPI";
 
 interface BlogListProps {
@@ -12,11 +12,12 @@ const BlogList: React.FC<BlogListProps> = ({ posts }) => {
     <div className="blog-list">
       {posts.map((post) => (
         <div key={post.id} className="blog-list-item">
-          <BlogPost
-            title={post.attributes.title}
-            content={post.attributes.content}
-          />
-          {/* Add more elements like date, author, etc. if needed */}
+          <h2>{post.attributes.title}</h2>
+          <p>{post.attributes.content.substring(0, 200)}...</p>{" "}
+          {/* Show an excerpt */}
+          {/* Optionally add other information here like date, author */}
+          <Link to={`/post/${post.id}`}>Read More</Link>{" "}
+          {/* Link to the full post */}
         </div>
       ))}
     </div>
