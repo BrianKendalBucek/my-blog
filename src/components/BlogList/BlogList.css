@@ -1,4 +1,53 @@
 .blog-list {
-  max-width: 600px;
-  margin: 20px auto;
+  max-width: 800px; /* Maximum width of the list */
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column; /* Stack posts vertically */
+  gap: 20px; /* Space between posts */
+}
+
+.blog-list-item {
+  background-color: #fff; /* Background color for each item */
+  padding: 20px;
+  border-radius: 4px; /* Rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  transition: box-shadow 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.blog-list-item:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+}
+
+.blog-list-item h2 {
+  font-size: 1.5em; /* Title size */
+  color: #333; /* Title color */
+  margin-bottom: 10px;
+}
+
+.blog-list-item p {
+  font-size: 1em;
+  color: #666;
+  margin-bottom: 15px; /* Spacing before 'Read More' link */
+}
+
+.blog-list-item a {
+  text-decoration: none;
+  color: #0066cc; /* Link color */
+  font-weight: bold;
+}
+
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+  .blog-list {
+    padding: 15px;
+  }
+
+  .blog-list-item {
+    padding: 15px;
+  }
+
+  .blog-list-item h2 {
+    font-size: 1.25em;
+  }
 }

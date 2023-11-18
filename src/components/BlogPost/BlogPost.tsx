@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getArticles, Article } from "../../api/strapiAPI";
+import "./BlogPost.css"; // Adjust the path as necessary
 
 const BlogPost: React.FC = () => {
   const { id } = useParams<{ id: string }>();
