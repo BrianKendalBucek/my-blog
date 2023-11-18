@@ -9,11 +9,12 @@ interface BlogPostProps {
 
 const BlogPost: React.FC<BlogPostProps> = ({ title, content }) => {
   const { id } = useParams<{ id: string }>();
+
   const [post, setPost] = useState<Article | null>(null);
 
   useEffect(() => {
     const fetchPost = async () => {
-      if (!title && id) {
+      if (id) {
         try {
           const articles = await getArticles();
           const foundPost = articles.find(
@@ -24,27 +25,19 @@ const BlogPost: React.FC<BlogPostProps> = ({ title, content }) => {
           console.error("Error fetching article:", error);
           setPost(null);
         }
-      } else {
-        setPost({
-          id: 0,
-          attributes: {
-            title: title || "",
-            content: content || "",
-            date: new Date().toISOString(),
-          },
-        });
       }
     };
 
     fetchPost();
-  }, [id, title, content]);
+  }, [id]);
+  console.log(post);
 
   return (
     <div className="blog-post">
-      {post ? (
+      {title ? (
         <>
-          <h2>{post.attributes.title}</h2>
-          <p>{post.attributes.content}</p>
+          <h2>{title}</h2>
+          <p>{content}</p>
         </>
       ) : (
         <p>Post not found.</p>

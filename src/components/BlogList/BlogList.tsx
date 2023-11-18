@@ -1,5 +1,5 @@
 import React from "react";
-import "./BlogList.css";
+import "./BlogList.css"; // Make sure to update this CSS file for styling
 import BlogPost from "../BlogPost/BlogPost";
 import { Article } from "../../api/strapiAPI";
 
@@ -11,11 +11,13 @@ const BlogList: React.FC<BlogListProps> = ({ posts }) => {
   return (
     <div className="blog-list">
       {posts.map((post) => (
-        <BlogPost
-          key={post.id}
-          title={post.attributes.title}
-          content={post.attributes.content}
-        />
+        <div key={post.id} className="blog-list-item">
+          <BlogPost
+            title={post.attributes.title}
+            content={post.attributes.content}
+          />
+          {/* Add more elements like date, author, etc. if needed */}
+        </div>
       ))}
     </div>
   );
