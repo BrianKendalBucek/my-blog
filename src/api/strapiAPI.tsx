@@ -1,10 +1,9 @@
 import axios from "axios";
 
-// Define a type for Article, adjust according to your data structure
 export type ArticleAttributes = {
   title: string;
   content: string;
-  date: string; // and other fields as necessary
+  date: string;
 };
 
 export type Article = {

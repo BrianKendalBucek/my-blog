@@ -7,7 +7,6 @@ import BlogPost from "./components/BlogPost/BlogPost";
 import { getArticles, Article } from "./api/strapiAPI"; // Update the path
 
 const App: React.FC = () => {
-  // Explicitly declare the type for posts
   const [posts, setPosts] = useState<Article[]>([]);
 
   useEffect(() => {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getArticles, Article } from "../../api/strapiAPI"; // Adjust the path as necessary
+import { getArticles, Article } from "../../api/strapiAPI";
 
 interface BlogPostProps {
   title?: string;
@@ -25,13 +25,12 @@ const BlogPost: React.FC<BlogPostProps> = ({ title, content }) => {
           setPost(null);
         }
       } else {
-        // Adjust to match the Article type structure
         setPost({
           id: 0,
           attributes: {
             title: title || "",
             content: content || "",
-            date: new Date().toISOString(), // Default date as current date
+            date: new Date().toISOString(),
           },
         });
       }

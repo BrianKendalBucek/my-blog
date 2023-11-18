@@ -4,7 +4,7 @@ import BlogPost from "../BlogPost/BlogPost";
 import { Article } from "../../api/strapiAPI";
 
 interface BlogListProps {
-  posts: Article[]; // This should be an array of Article objects
+  posts: Article[];
 }
 
 const BlogList: React.FC<BlogListProps> = ({ posts }) => {
