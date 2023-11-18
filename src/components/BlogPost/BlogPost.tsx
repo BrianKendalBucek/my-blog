@@ -1,30 +1,57 @@
-import React, { useState, useEffect } from 'react';
-import './BlogPost.css';
-import { useParams } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { getArticles, Article } from "../../api/strapiAPI"; // Adjust the path as necessary
 
 interface BlogPostProps {
-    title?: string;
-    content?: string;
+  title?: string;
+  content?: string;
 }
 
 const BlogPost: React.FC<BlogPostProps> = ({ title, content }) => {
-    const { id } = useParams();
-    const [post, setPost] = useState({ title: '', content: '' });
+  const { id } = useParams<{ id: string }>();
+  const [post, setPost] = useState<Article | null>(null);
 
-    useEffect(() => {
-        if (!title && id) {
-            // Fetch the post using the id
-        } else {
-            setPost({ title: title || '', content: content || '' });
+  useEffect(() => {
+    const fetchPost = async () => {
+      if (!title && id) {
+        try {
+          const articles = await getArticles();
+          const foundPost = articles.find(
+            (article) => article.id.toString() === id
+          );
+          setPost(foundPost || null);
+        } catch (error) {
+          console.error("Error fetching article:", error);
+          setPost(null);
         }
-    }, [id, title, content]);
+      } else {
+        // Adjust to match the Article type structure
+        setPost({
+          id: 0,
+          attributes: {
+            title: title || "",
+            content: content || "",
+            date: new Date().toISOString(), // Default date as current date
+          },
+        });
+      }
+    };
 
-    return (
-        <div>
-            <h2>{post.title}</h2>
-            <p>{post.content}</p>
-        </div>
-    );
-}
+    fetchPost();
+  }, [id, title, content]);
+
+  return (
+    <div className="blog-post">
+      {post ? (
+        <>
+          <h2>{post.attributes.title}</h2>
+          <p>{post.attributes.content}</p>
+        </>
+      ) : (
+        <p>Post not found.</p>
+      )}
+    </div>
+  );
+};
 
 export default BlogPost;

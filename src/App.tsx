@@ -1,31 +1,33 @@
-import React from 'react';
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route
-} from 'react-router-dom';
-import './App.css';
-import Navbar from './components/Navbar/Navbar';
-import BlogList from './components/BlogList/BlogList';
-import BlogPost from './components/BlogPost/BlogPost';
-// Import other components you might need
+import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import "./App.css";
+import Navbar from "./components/Navbar/Navbar";
+import BlogList from "./components/BlogList/BlogList";
+import BlogPost from "./components/BlogPost/BlogPost";
+import { getArticles, Article } from "./api/strapiAPI"; // Update the path
 
 const App: React.FC = () => {
-    const blogPosts = [
-        { title: "Post 1", content: "This is the first post." },
-        { title: "Post 2", content: "This is the second post." },
-        // Add more posts here if needed
-    ];
+  // Explicitly declare the type for posts
+  const [posts, setPosts] = useState<Article[]>([]);
 
-    return (
-        <Router>
-            <Navbar />
-            <Routes>
-                <Route path="/" element={<BlogList posts={blogPosts} />} />
-                <Route path="/post/:id" element={<BlogPost />} />
-            </Routes>
-        </Router>
-    );
-}
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const articles = await getArticles();
+      setPosts(articles);
+    };
+
+    fetchPosts();
+  }, []);
+
+  return (
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<BlogList posts={posts} />} />
+        <Route path="/post/:id" element={<BlogPost />} />
+      </Routes>
+    </Router>
+  );
+};
 
 export default App;
