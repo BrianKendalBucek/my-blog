@@ -1,18 +1,67 @@
 body {
-  background-image: url("/public/costarica.jpg"); /* Replace with your image path */
-  background-size: cover; /* Cover the entire area */
-  background-position: center; /* Center the image */
-  background-attachment: fixed; /* Fix the background image */
-  background-repeat: no-repeat; /* Do not repeat the image */
+  background-image: url("/public/costarica.jpg"); /* Ensure this path is correct */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  font-family: "Roboto", sans-serif; /* A clean, modern sans-serif font */
+  color: #333; /* Dark gray for text for better readability */
+  line-height: 1.6; /* Improves text readability */
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+/* Overall layout adjustments */
+.container {
+  width: 90%;
+  max-width: 1200px; /* Max width for large screens */
+  margin: auto;
+  padding: 20px;
 }
+
+/* Typography improvements */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: white; /* Slightly darker color for headings */
+  margin-top: 0;
+}
+
+h1 {
+  font-size: 2.5em; /* Larger size for main headings */
+}
+
+h2 {
+  font-size: 2em;
+}
+
+h3 {
+  font-size: 1.75em;
+}
+
+p {
+  font-size: 1em;
+  margin-bottom: 15px; /* Space between paragraphs */
+}
+
+a {
+  color: #0066cc; /* A standard, web-friendly link color */
+  text-decoration: none; /* No underline */
+}
+
+a:hover {
+  text-decoration: underline; /* Underline on hover for links */
+}
+
+/* Code styling */
+code {
+  font-family: "Consolas", "Courier New", monospace;
+  background-color: #f4f4f4; /* Light background for code */
+  padding: 2px 5px;
+  border-radius: 3px; /* Rounded corners for code blocks */
+}
+
+/* Add other styles as necessary... */
